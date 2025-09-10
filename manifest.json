@@ -1,0 +1,30 @@
+{
+  "name":     {
+      "src": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%232E7D32'%3E%3Cpath d='M20 2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h4l4 4 4-4h4c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z'/%3E%3C/svg%3E",
+      "sizes": "144x144",
+      "type": "image/svg+xml"
+    },
+
+  "short_name": "Chat Viewer",
+  "description": "Analisis chat messenger secara offline dan aman. 100% privat, tidak ada upload ke server.",
+  "start_url": "./",
+  "display": "standalone",
+  "theme_color": "#2E7D32",
+  "background_color": "#ffffff",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTQ0IiBoZWlnaHQ9IjE0NCIgdmlld0JveD0iMCAwIDE0NCAxNDQiIGZpbGw9IiMyNUQzNjYiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZD0iTTc0IEMxMDggNDUuNSA5NUIgSUdxdks1IDIwIDEwOCAxOTBkSi43eiVBLTI5IDgtdWk3Sndpdi1zSGVWdG5QakZqYm1acVpuZGtkZ1l1ZDNGdWFuVlJjbWRvTWk5aFVsOWpZWEJwYVhaaFlUUTdiVUUiLz48cGF0aCBkPSJtTTQxLjggYzYzLjktODY5IDUwLTRiLjM1LRE3MzA5OTlwNTVgOTAz05SyRpZWluZm5RUXpUxGI3QlKxCGl9eU5jamVpaVliQTJMaTkzJUEgckdkOEF2OVBocnRxeEUZTWpmIi8+PHBhdGggZD0iTWJuR3dpazhnMlUyOUN3N2VhYmFhUzJDUWJtN2RRVFQ5d0dzbTVNLjIw7mFAdGZaZGFoSWEzYjVRMUliYVpZaUliUUZtdGdrZEl3L0ZEekMPakZGR2k5V09xd7ZSlfSzF6ZmlQdm9kZnk9IiB2MGF6N2liaVppQUpaQm5GZ2xkSWEzYjVRMUliYlBJZks5Ii8+PHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzk5NjMyNSIvPjwvc3ZnPg==",
+      "sizes": "144x144",
+      "type": "image/svg+xml"
+    },
+    {
+      "src": "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNTIwIiBoZWlnaHQ9IjUyMCIgdmlld0JveD0iMCAwIDU0NCA1NDQiIGZpbGw9IiMyNUQzNjYiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZD0iTTI2NCBDNzAgOEZNdEU0NU1kWTQ5TjEyMC0yMi42QzU5OC0yMi42IDE3MyA0OS44STE3MyAxMjBkNDU2LjhjbWMwIDM2LjEtMjcuNiA3Mi44S2t0MjIuNiBMNzAgNjU2aC0yNTAuMHcgMC02MVM1MzAuOGN5bWJuQ3E1Tk9OdDNtNVpJYVVGaWREcTlJZks5IiB2MGF6N2liaVliQTJQYm5GZ2xkSWEvRkR6QzlqRWlGR2k5V05xd3FNV0FpZGxtYVVGMXNacnZZaTlZP29JUW9zaHpNRnAyd05FV3FNSlJtZXNGU2Rib3ZhSEE9ImlQdG1nYVFod0lDakg3Zms5SSIgeEJhMTE9Ii8+PHN0b3AgV2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzk5NjMyNSIvPjwvc3ZnPg==",
+      "sizes": "520x520",
+      "type": "image/svg+xml"
+    }
+  ],
+  "categories": ["utilities", "productivity"],
+  "shortcuts": [],
+  "screenshots": []
+}

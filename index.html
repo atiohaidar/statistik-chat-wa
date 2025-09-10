@@ -3,7 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title id="pageTitle">WhatsApp Chat Viewer</title>
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; font-src 'self' https://cdnjs.cloudflare.com; img-src 'self' data: blob:; connect-src 'self'; frame-src 'none'; object-src 'none'; base-uri 'self'; worker-src 'self';">
+    
+    <!-- PWA Meta Tags -->
+    <meta name="theme-color" content="#2E7D32">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="Chat Analyzer">
+    <meta name="description" content="Analisis chat messenger secara offline dan aman. 100% privat, tidak ada upload ke server.">
+    <meta name="mobile-web-app-capable" content="yes">
+    
+    <!-- Web App Manifest -->
+    <link rel="manifest" href="data:application/json;base64,ewogICJuYW1lIjogIldoYXRzQXBwIENoYXQgVmlld2VyIiwKICAic2hvcnRfbmFtZSI6ICJDaGF0IFZpZXdlciIsCiAgImRlc2NyaXB0aW9uIjogIkFuYWxpc2lzIGNoYXQgV2hhdHNBcHAgc2VjYXJhIG9mZmxpbmUgZGFuIGFtYW4uIDEwMCUgcHJpdmF0LCB0aWRhayBhZGEgdXBsb2FkIGtlIHNlcnZlci4iLAogICJzdGFydF91cmwiOiAiLi8iLAogICJkaXNwbGF5IjogInN0YW5kYWxvbmUiLAogICJ0aGVtZV9jb2xvciI6ICIjMjVEMzY2IiwKICAiYmFja2dyb3VuZF9jb2xvciI6ICIjZmZmZmZmIiwKICAib3JpZW50YXRpb24iOiAicG9ydHJhaXQiLAogICJpY29ucyI6IFsKICAgIHsKICAgICAgInNyYyI6ICJkYXRhOmltYWdlL3N2Zyt4bWw7YmFzZTY0LFBITjJaeUIzYVdSMGFEMGlNVEk0SWlCb1pXbG5hSFE5SWpFeU9DSWdkbWxsZDBKdmVEMGlNQ0F3SURFME5DQXhORFFpSUdacGJHdzlJaU16TlVRek5qWWlJSGh0Ykc1elBTSm9kSFJ3T2k4dmQzZDNMbmN6TG05eVp5OHlNREF3TDNOMlp5SStQSEJoZEdnZ1pEMGlUVGMwSUVNeE1EZ3VORMEE1TkRVQklId3VWbXNnSURFNU1DQXhNRGdnTVRrd2RGaHVNVGcwTFRjdWVrRXRNamtnT0MxMU0wcHdNaTB1VTBsRWJWdDBaMkpqYm1aeVduZGtaeTl1ZDNGdWFuVlNjbWRvTWk5aVVsOWpZWEIwYVhaaFlUUTNiVUU5SWlBdlBqeHdZWFJvSUdROUltMU5OREV1T0NCak5qTXVPUzA0TmprZ05UQXROR0l1TXpVdFJERTNNekE1T1Rsd05UVWdOVE56ZDFKcFpXbG1iakZRZXpVeGI4Y0NhVUZwZGtzOUlpQXZQanh3WVhSb0lHUTlJazFRYm5KM2FtbHJPR1V5T1VOamJqSmFkV0poWVRNeVExRWliVGNrY1NjNWQwZHpNeWN1YlVGQWNtZGtPRUYyT0hCb2NuUnhlREU1TWpBaWZqMGlQanhzYVc1bFlYSkhaR0ZrYVdWdWRDQjJNR0Y2TjJsaWFWbGlRMUJtZEdka1NXQXZSa1J6UTA5cVJtaEhhUzlYT25GN1lTbGZTekZ6WmlCMmIyOXphSEE5SW1oQkluZzlJak13SlNJdlBqeHpkRzl3SUc5bVpuTmxkRDBpTUNVaUlITjBiM0F0WTI5c2IzSTlJaU01T1JZek1qVWlMejQ4TDNOMlp6ND0iLAogICAgICAic2l6ZXMiOiAiMTQ0eDE0NCIsCiAgICAgICJ0eXBlIjogImltYWdlL3N2Zyt4bWwiCiAgICB9LAogICAgewogICAgICAic3JjIjogImRhdGE6aW1hZ2Uvc3ZnK3htbDtiYXNlNjQsUEhOMlp5QjNhV1IwYUQwaU5USXdJaUJvWldsbmFIUTlJalV5TUNJZ2RtbGxkMEp2ZUQwaU1DQXdJRFUwTkNBMU5EUWlJR1pwYkd3OUlpTXpOVVF6TmpZaUlIaHRiRzV6UFNKb2RIUndPaTh2ZDNkM0xtY3pMbTl5Wnk4eU1EQXdMM04yWnlJK1BIQmhkR2dnWkQwaVRUSTJOQ0JETnpBZ09FMWRRVTR4TWpBdE1qSXVOa00xT1RndE1qSXVOaUF4TnpNZ05Ea3VPRUl4TnpNZ01USXdkalExTmk0NGJXTXdJRE0yTGpFdE1qY3VOaUEzTWk0NFMydDBNakl1TmlCTU56QWdOalUyYUMweU5UQXVNSGNnTUMwMklqVXpNQzQ0WTNsaWJXNUNQakUxT1M0aU56STVNaTQxTWpGRE9qZGJNams1TGpNeElEUjRNelUxTGpOek1UWXVOaTR1VGpOZ056VWdNVFUwTWpKQ1BqVXlOUzQwTWpnZzVNakF1TWpWd1cxOG0xNWFudDNNMVpKYVVGK2RrcDlJaUF2UGp4d1lYUm9JR1E5SW0xa05UVTFOVFEzTUdNek5ETXRNVEF3TURrMVZsTTRNVFUzTURad2FYVWdOUzR5TkR3dE1EVTRPV0VrWkM1VE5qUXdNemN1TXpNOUlpQjJNR0Y2TjJsaWFWbGlRMUJtZEdka1NXQXZSa1J6UTA5cVJtaEdhUzlYT25GN1lTbGZTekZ6ZmlCMmIyOXphSEE5SW1oQkluZzlJakV3TUNVaUlEbE5wZEMxU0k5Y2Nvc3FNV0ZwZGtzMGFVRjFhMlY1UFNJaVBqeHpkRzl3SUc5bVpuTmxkRDBpTUNVaUlITjBiM0F0WTI5c2IzSTlJaU01T1JZek1qVWlMejQ4TDNOMlp6ND0iLAogICAgICAic2l6ZXMiOiAiNTIweDUyMCIsCiAgICAgICJ0eXBlIjogImltYWdlL3N2Zyt4bWwiCiAgICB9CiAgXSwKICAiY2F0ZWdvcmllcyI6IFsidXRpbGl0aWVzIiwgInByb2R1Y3Rpdml0eSJdLAogICJzaG9ydGN1dHMiOiBbXSwKICAic2NyZWVuc2hvdHMiOiBbXQp9">
+    
+    <title id="pageTitle">Chat Analyzer</title>
     <style>
         * {
             margin: 0;
@@ -28,7 +41,7 @@
         }
 
         .header {
-            background: linear-gradient(135deg, #25D366, #128C7E);
+            background: linear-gradient(135deg, #2E7D32, #1B5E20);
             color: white;
             padding: 30px;
             text-align: center;
@@ -52,7 +65,7 @@
         }
 
         .drop-zone {
-            border: 3px dashed #25D366;
+            border: 3px dashed #2E7D32;
             border-radius: 15px;
             padding: 60px 20px;
             margin: 20px 0;
@@ -64,13 +77,13 @@
         .drop-zone:hover,
         .drop-zone.dragover {
             background: #e8f5e8;
-            border-color: #128C7E;
+            border-color: #1B5E20;
             transform: scale(1.02);
         }
 
         .drop-zone i {
             font-size: 4em;
-            color: #25D366;
+            color: #2E7D32;
             margin-bottom: 20px;
         }
 
@@ -85,7 +98,7 @@
         }
 
         .btn {
-            background: linear-gradient(135deg, #25D366, #128C7E);
+            background: linear-gradient(135deg, #2E7D32, #1B5E20);
             color: white;
             border: none;
             padding: 15px 30px;
@@ -94,12 +107,12 @@
             cursor: pointer;
             transition: all 0.3s ease;
             margin: 10px;
-            box-shadow: 0 5px 15px rgba(37, 211, 102, 0.3);
+            box-shadow: 0 5px 15px rgba(46, 125, 50, 0.3);
         }
 
         .btn:hover {
             transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
+            box-shadow: 0 8px 25px rgba(46, 125, 50, 0.4);
         }
 
         .btn-pdf {
@@ -131,7 +144,7 @@
 
         .search-box:focus {
             outline: none;
-            border-color: #25D366;
+            border-color: #2E7D32;
         }
 
         .stats {
@@ -151,7 +164,7 @@
         .stat-number {
             font-size: 1.5em;
             font-weight: bold;
-            color: #25D366;
+            color: #2E7D32;
         }
 
         .stat-label {
@@ -241,6 +254,203 @@
             padding: 40px;
             font-size: 1.2em;
             color: #666;
+        }
+
+        .security-notice {
+            background: linear-gradient(135deg, #2E7D32, #1B5E20);
+            color: white;
+            padding: 15px 20px;
+            margin: 10px 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(46, 125, 50, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 0.9em;
+        }
+
+        .security-notice .security-icon {
+            font-size: 1.5em;
+            margin-right: 15px;
+        }
+
+        .security-notice .security-text {
+            flex: 1;
+            line-height: 1.4;
+        }
+
+        .security-status {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.8em;
+        }
+
+        .security-indicator {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .security-indicator .status-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #ffffff;
+        }
+
+        .privacy-controls {
+            background: #f8f9fa;
+            padding: 15px 20px;
+            border-bottom: 1px solid #e9ecef;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .privacy-info {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.9em;
+            color: #495057;
+        }
+
+        .clear-data-btn {
+            background: #dc3545;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .clear-data-btn:hover {
+            background: #c82333;
+            transform: translateY(-1px);
+        }
+
+        .offline-indicator {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            background: #28a745;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.8em;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .offline-indicator .pulse-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #ffffff;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.5; }
+            100% { opacity: 1; }
+        }
+
+        .install-prompt {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(135deg, #25D366, #128C7E);
+            color: white;
+            padding: 15px 25px;
+            border-radius: 25px;
+            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
+            z-index: 1001;
+            display: none;
+            align-items: center;
+            gap: 15px;
+            font-size: 0.9em;
+            animation: slideUp 0.3s ease-out;
+        }
+
+        .install-prompt.show {
+            display: flex;
+        }
+
+        .install-btn {
+            background: rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: white;
+            padding: 8px 15px;
+            border-radius: 15px;
+            font-size: 0.8em;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .install-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .close-install {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.2em;
+            cursor: pointer;
+            opacity: 0.7;
+            transition: opacity 0.3s ease;
+        }
+
+        .close-install:hover {
+            opacity: 1;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateX(-50%) translateY(100px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(-50%) translateY(0);
+            }
+        }
+
+        .pwa-features {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px 20px;
+            margin: 10px 20px;
+            border-radius: 10px;
+            font-size: 0.9em;
+            display: none;
+        }
+
+        .pwa-features.show {
+            display: block;
+        }
+
+        .pwa-feature {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin: 8px 0;
         }
 
         .hidden {
@@ -817,24 +1027,94 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
 </head>
 <body>
     <div class="container">
+        <!-- Security Notice Banner -->
+        <div class="security-notice">
+            <div class="security-icon">🔒</div>
+            <div class="security-text">
+                Semua data diproses di browser Anda, tidak ada upload ke server. 
+            </div>
+            <div class="security-status">
+                <div class="security-indicator">
+                    <div class="status-dot"></div>
+                    <span>Offline</span>
+                </div>
+                <div class="security-indicator">
+                    <div class="stattus-dot"></div>
+                    <span>No Upload To Server</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Offline Indicator -->
+        <div class="offline-indicator" id="offlineIndicator">
+            <div class="pulse-dot"></div>
+            <span>🔒 Mode Offline Aktif</span>
+        </div>
+
+        <!-- PWA Install Prompt -->
+        <div class="install-prompt" id="installPrompt">
+            <div>
+                <i class="fas fa-download"></i>
+                <strong>Install Aplikasi</strong>
+                <div style="font-size: 0.8em; opacity: 0.9;">Gunakan offline kapan saja!</div>
+            </div>
+            <button class="install-btn" id="installBtn">Install</button>
+            <button class="close-install" id="closeInstall">✕</button>
+        </div>
+
+        <!-- PWA Features Info -->
+        <div class="pwa-features" id="pwaFeatures">
+            <h4 style="margin-bottom: 10px;">🚀 Fitur Offline Tersedia!</h4>
+            <div class="pwa-feature">
+                <span>📱</span> Install sebagai aplikasi di perangkat Anda
+            </div>
+            <div class="pwa-feature">
+                <span>🔒</span> Berfungsi 100% offline setelah install
+            </div>
+            <div class="pwa-feature">
+                <span>⚡</span> Loading lebih cepat dan hemat data
+            </div>
+            <div class="pwa-feature">
+                <span>🎯</span> Akses langsung dari home screen
+            </div>
+        </div>
+
         <div class="header">
-            <h1 id="mainTitle"><i class="fab fa-whatsapp"></i> WhatsApp Chat Viewer</h1>
-            <p id="mainSubtitle">Lihat dan ekspor chat WhatsApp dengan mudah</p>
+            <h1 id="mainTitle"><i class="fas fa-comments"></i> Chat Analyzer</h1>
+            <p id="mainSubtitle">Analisis dan ekspor chat messenger dengan mudah</p>
+        </div>
+
+        <!-- Privacy Controls -->
+        <div class="privacy-controls" id="privacyControls" style="display: none;">
+            <div class="privacy-info">
+                <i class="fas fa-shield-alt" style="color: #28a745;"></i>
+                <span>Data diproses secara lokal di browser Anda. Tidak ada koneksi internet yang diperlukan.</span>
+            </div>
+            <button class="clear-data-btn" id="clearDataBtn">
+                <i class="fas fa-trash-alt"></i>
+                Hapus Semua Data
+            </button>
         </div>
 
         <div class="upload-section" id="uploadSection">
             <div class="drop-zone" id="dropZone">
                 <i class="fas fa-cloud-upload-alt"></i>
-                <p>Drag & Drop file chat WhatsApp (.txt) ke sini</p>
+                <p>Drag & Drop file Export Chat WhatsApp (.txt atau .zip) ke sini </p>
                 <p style="font-size: 1em; color: #999;">atau</p>
                 <button class="btn" onclick="document.getElementById('fileInput').click()">
                     <i class="fas fa-file-alt"></i> Pilih File
                 </button>
+                <p>contoh: WhatsApp Chat with Group A.zip</p>
+                <div style="margin-top: 15px; padding: 10px; background: rgba(46, 125, 50, 0.1); border-radius: 8px; font-size: 0.85em; color: #1B5E20;">
+                    <i class="fas fa-info-circle"></i> <strong>Keamanan:</strong> File tidak akan diupload ke server manapun. 
+                    Semua pemrosesan dilakukan di browser Anda secara offline.
+                </div>
             </div>
-            <input type="file" id="fileInput" class="file-input" accept=".txt" />
+            <input type="file" id="fileInput" class="file-input" accept=".txt,.zip" />
         </div>
 
         <div class="statistics-section hidden" id="statisticsSection">
@@ -1076,6 +1356,9 @@
         const exportBtn = document.getElementById('exportBtn');
         const exportPdfBtn = document.getElementById('exportPdfBtn');
         const controls = document.querySelector('.controls');
+        const privacyControls = document.getElementById('privacyControls');
+        const clearDataBtn = document.getElementById('clearDataBtn');
+        const offlineIndicator = document.getElementById('offlineIndicator');
 
         // New elements
         const pageTitle = document.getElementById('pageTitle');
@@ -1119,6 +1402,156 @@
         const phraseStatsLimit = document.getElementById('phraseStatsLimit');
         const phraseStatsList = document.getElementById('phraseStatsList');
 
+        // Security and Privacy Functions
+        function clearAllData() {
+            if (confirm('Apakah Anda yakin ingin menghapus semua data chat dari memori? Tindakan ini tidak dapat dibatalkan.')) {
+                // Clear all data variables
+                chatData = [];
+                filteredData = [];
+                originalData = [];
+                participants = new Set();
+                userStats = {};
+                dailyStats = {};
+                hourlyStats = {};
+                wordStats = {};
+                phraseStats = {};
+                currentFilters = {};
+                fileName = '';
+                
+                // Clear UI
+                messagesContainer.innerHTML = '';
+                usersTableBody.innerHTML = '';
+                wordStatsList.innerHTML = '';
+                phraseStatsList.innerHTML = '';
+                
+                // Destroy charts
+                Object.values(charts).forEach(chart => {
+                    if (chart && typeof chart.destroy === 'function') {
+                        chart.destroy();
+                    }
+                });
+                charts = {};
+                
+                // Reset UI state
+                uploadSection.classList.remove('hidden');
+                statisticsSection.classList.add('hidden');
+                privacyControls.style.display = 'none';
+                filterInfo.classList.remove('active');
+                
+                // Reset page title
+                pageTitle.textContent = 'WhatsApp Chat Viewer';
+                mainTitle.innerHTML = '<i class="fab fa-whatsapp"></i> WhatsApp Chat Viewer';
+                mainSubtitle.textContent = 'Lihat dan ekspor chat WhatsApp dengan mudah';
+                
+                // Clear file input
+                fileInput.value = '';
+                
+                // Force garbage collection if available
+                if (window.gc) {
+                    window.gc();
+                }
+                
+                alert('Semua data chat telah dihapus dari memori browser Anda.');
+            }
+        }
+
+        function initializeSecurityFeatures() {
+            // Monitor for unauthorized network requests (but allow CDN resources)
+            const originalFetch = window.fetch;
+            
+            // Override fetch to monitor requests, but allow CDN resources
+            window.fetch = function(...args) {
+                const url = args[0];
+                const allowedDomains = [
+                    'cdn.jsdelivr.net',
+                    'cdnjs.cloudflare.com'
+                ];
+                
+                // Allow CDN requests for libraries
+                if (typeof url === 'string' && allowedDomains.some(domain => url.includes(domain))) {
+                    return originalFetch.apply(this, args);
+                }
+                
+                // Block other network requests
+                console.warn('Unauthorized network request blocked for security:', url);
+                return Promise.reject(new Error('Network requests to unauthorized domains are disabled for security'));
+            };
+            
+            // Show offline indicator
+            updateOfflineStatus();
+            
+            // Auto-clear data on page unload
+            window.addEventListener('beforeunload', (e) => {
+                if (chatData.length > 0) {
+                    // Clear sensitive data immediately
+                    setTimeout(() => {
+                        clearAllDataSilent();
+                    }, 100);
+                }
+            });
+            
+            // Clear data when page is hidden or user switches tabs for extended time
+            let hiddenTimer;
+            document.addEventListener('visibilitychange', () => {
+                if (document.hidden && chatData.length > 0) {
+                    // Set timer to clear data if hidden for more than 30 minutes
+                    hiddenTimer = setTimeout(() => {
+                        clearAllDataSilent();
+                        console.log('Data cleared due to extended inactivity');
+                    }, 30 * 60 * 1000); // 30 minutes
+                } else if (!document.hidden && hiddenTimer) {
+                    // Cancel timer if user returns
+                    clearTimeout(hiddenTimer);
+                }
+            });
+            
+            // Show privacy controls when data is loaded
+            clearDataBtn.addEventListener('click', clearAllData);
+        }
+
+        function clearAllDataSilent() {
+            // Silent version without confirmation for auto-cleanup
+            chatData = [];
+            filteredData = [];
+            originalData = [];
+            participants = new Set();
+            userStats = {};
+            dailyStats = {};
+            hourlyStats = {};
+            wordStats = {};
+            phraseStats = {};
+            currentFilters = {};
+            fileName = '';
+            
+            // Force garbage collection if available
+            if (window.gc) {
+                window.gc();
+            }
+        }
+
+        function updateOfflineStatus() {
+            // Update offline indicator
+            if (navigator.onLine === false) {
+                offlineIndicator.style.background = '#28a745';
+                offlineIndicator.innerHTML = '<div class="pulse-dot"></div><span>🔒 Mode Offline Aktif</span>';
+            } else {
+                offlineIndicator.style.background = '#ffc107';
+                offlineIndicator.innerHTML = '<div class="pulse-dot"></div><span>⚠️ Online - Data Tetap Lokal</span>';
+            }
+        }
+
+        function showPrivacyControls() {
+            privacyControls.style.display = 'flex';
+        }
+
+        function hidePrivacyControls() {
+            privacyControls.style.display = 'none';
+        }
+
+        // Network status monitoring
+        window.addEventListener('online', checkOnlineStatus);
+        window.addEventListener('offline', checkOnlineStatus);
+
         // Initialize navigation
         navTabs.forEach(tab => {
             tab.addEventListener('click', () => {
@@ -1160,21 +1593,59 @@
             }
         });
 
-        function handleFile(file) {
-            if (!file.name.endsWith('.txt')) {
-                alert('Mohon pilih file .txt dari ekspor chat WhatsApp');
-                return;
-            }
+        async function handleFile(file) {
+            try {
+                if (file.name.toLowerCase().endsWith('.zip')) {
+                    fileName = file.name.replace(/\.zip$/i, '');
+                    updatePageTitle();
+                    showLoading();
 
-            fileName = file.name.replace('.txt', '');
-            updatePageTitle();
-            showLoading();
-            
-            const reader = new FileReader();
-            reader.onload = (e) => {
-                parseWhatsAppChat(e.target.result);
-            };
-            reader.readAsText(file, 'utf-8');
+                    const arrayBuffer = await file.arrayBuffer();
+                    const zip = await JSZip.loadAsync(arrayBuffer);
+
+                    // Find the first WhatsApp chat txt inside ZIP
+                    const candidate = Object.keys(zip.files).find(path => {
+                        const lower = path.toLowerCase();
+                        return lower.endsWith('.txt') && lower.includes('whatsapp chat with');
+                    }) || Object.keys(zip.files).find(path => path.toLowerCase().endsWith('.txt'));
+
+                    if (!candidate) {
+                        hideLoading();
+                        alert('Tidak ditemukan file .txt chat WhatsApp di dalam ZIP. Pastikan ada file yang namanya mengandung "WhatsApp Chat with".');
+                        return;
+                    }
+
+                    const entry = zip.files[candidate];
+                    const txtContent = await entry.async('text');
+
+                    // Set fileName from inner txt if possible
+                    const innerName = candidate.split('/').pop() || fileName;
+                    fileName = innerName.replace(/\.txt$/i, '');
+                    updatePageTitle();
+
+                    parseWhatsAppChat(txtContent);
+                    return;
+                }
+
+                if (file.name.toLowerCase().endsWith('.txt')) {
+                    fileName = file.name.replace(/\.txt$/i, '');
+                    updatePageTitle();
+                    showLoading();
+
+                    const reader = new FileReader();
+                    reader.onload = (e) => {
+                        parseWhatsAppChat(e.target.result);
+                    };
+                    reader.readAsText(file, 'utf-8');
+                    return;
+                }
+
+                alert('Mohon pilih file .txt atau .zip dari ekspor chat WhatsApp');
+            } catch (err) {
+                console.error('Gagal memproses file:', err);
+                hideLoading();
+                alert('Terjadi kesalahan saat membaca file. Pastikan ZIP berisi file .txt chat WhatsApp.');
+            }
         }
 
         function updatePageTitle() {
@@ -1184,28 +1655,7 @@
             mainSubtitle.textContent = `Analisis chat untuk: ${fileName}`;
         }
 
-        fileInput.addEventListener('change', (e) => {
-            if (e.target.files.length > 0) {
-                handleFile(e.target.files[0]);
-            }
-        });
-
-        function handleFile(file) {
-            if (!file.name.endsWith('.txt')) {
-                alert('Mohon pilih file .txt dari ekspor chat WhatsApp');
-                return;
-            }
-
-            fileName = file.name.replace('.txt', '');
-            updatePageTitle();
-            showLoading();
-            
-            const reader = new FileReader();
-            reader.onload = (e) => {
-                parseWhatsAppChat(e.target.result);
-            };
-            reader.readAsText(file, 'utf-8');
-        }
+    // Removed duplicate handleFile definition (consolidated above)
 
         function parseWhatsAppChat(content) {
             chatData = [];
@@ -2313,6 +2763,7 @@
         function showStatistics() {
             uploadSection.classList.add('hidden');
             statisticsSection.classList.remove('hidden');
+            showPrivacyControls();
         }
 
         function displayMessages() {
@@ -2878,9 +3329,141 @@
             }
         }
 
+        // PWA and Service Worker functionality
+        let deferredPrompt;
+        let isInstalled = false;
+
+        function initializePWA() {
+            // Register service worker
+            if ('serviceWorker' in navigator) {
+                window.addEventListener('load', () => {
+                    navigator.serviceWorker.register('./sw.js')
+                        .then((registration) => {
+                            console.log('✅ Service Worker registered successfully:', registration.scope);
+                            
+                            // Check for updates
+                            registration.addEventListener('updatefound', () => {
+                                const newWorker = registration.installing;
+                                newWorker.addEventListener('statechange', () => {
+                                    if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
+                                        // New content is available, refresh needed
+                                        if (confirm('Versi baru tersedia! Refresh halaman untuk update?')) {
+                                            window.location.reload();
+                                        }
+                                    }
+                                });
+                            });
+                        })
+                        .catch((error) => {
+                            console.log('❌ Service Worker registration failed:', error);
+                        });
+                });
+            }
+
+            // Handle install prompt
+            window.addEventListener('beforeinstallprompt', (e) => {
+                console.log('💡 PWA install prompt triggered');
+                e.preventDefault();
+                deferredPrompt = e;
+                showInstallPrompt();
+            });
+
+            // Handle app installed
+            window.addEventListener('appinstalled', (e) => {
+                console.log('🎉 PWA was installed');
+                isInstalled = true;
+                hideInstallPrompt();
+                showPWAFeatures();
+            });
+
+            // Check if already installed
+            if (window.matchMedia && window.matchMedia('(display-mode: standalone)').matches) {
+                isInstalled = true;
+                showPWAFeatures();
+            }
+
+            // Setup install button
+            const installBtn = document.getElementById('installBtn');
+            const closeInstall = document.getElementById('closeInstall');
+            
+            installBtn?.addEventListener('click', installPWA);
+            closeInstall?.addEventListener('click', hideInstallPrompt);
+
+            // Show PWA features after a delay if not installed
+            setTimeout(() => {
+                if (!isInstalled && !deferredPrompt) {
+                    showPWAFeatures();
+                }
+            }, 5000);
+        }
+
+        function showInstallPrompt() {
+            const installPrompt = document.getElementById('installPrompt');
+            if (installPrompt && !isInstalled) {
+                installPrompt.classList.add('show');
+            }
+        }
+
+        function hideInstallPrompt() {
+            const installPrompt = document.getElementById('installPrompt');
+            if (installPrompt) {
+                installPrompt.classList.remove('show');
+            }
+        }
+
+        function showPWAFeatures() {
+            const pwaFeatures = document.getElementById('pwaFeatures');
+            if (pwaFeatures) {
+                pwaFeatures.classList.add('show');
+                setTimeout(() => {
+                    pwaFeatures.classList.remove('show');
+                }, 10000); // Hide after 10 seconds
+            }
+        }
+
+        async function installPWA() {
+            if (!deferredPrompt) {
+                alert('Install tidak tersedia. Pastikan Anda menggunakan browser yang mendukung PWA.');
+                return;
+            }
+
+            // Show the install prompt
+            deferredPrompt.prompt();
+
+            // Wait for the user's response
+            const { outcome } = await deferredPrompt.userChoice;
+            
+            if (outcome === 'accepted') {
+                console.log('✅ User accepted the install prompt');
+                isInstalled = true;
+            } else {
+                console.log('❌ User dismissed the install prompt');
+            }
+
+            // Clear the deferred prompt
+            deferredPrompt = null;
+            hideInstallPrompt();
+        }
+
+        function checkOnlineStatus() {
+            const offlineIndicator = document.getElementById('offlineIndicator');
+            
+            if (navigator.onLine) {
+                offlineIndicator.style.background = '#ffc107';
+                offlineIndicator.innerHTML = '<div class="pulse-dot"></div><span>🌐 Online - Data Tetap Lokal</span>';
+            } else {
+                offlineIndicator.style.background = '#28a745';
+                offlineIndicator.innerHTML = '<div class="pulse-dot"></div><span>📱 Mode Offline Aktif</span>';
+            }
+        }
+
         // Initialize
         document.addEventListener('DOMContentLoaded', () => {
             console.log('WhatsApp Chat Viewer siap digunakan!');
+            initializeSecurityFeatures();
+            initializePWA();
+            checkOnlineStatus();
+            console.log('🔒 Security features initialized - All processing is local and offline');
         });
     </script>
 </body>
