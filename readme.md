@@ -1,6 +1,6 @@
 # WhatsApp Chat Viewer - Progressive Web App
 
-Aplikasi analisis chat WhatsApp yang 100% aman, privat, dan berfungsi offline.
+Aplikasi analisis chat WhatsApp yang berfungsi offline.
 
 ## 🚀 Fitur Keamanan & Privacy
 
@@ -45,7 +45,7 @@ Aplikasi analisis chat WhatsApp yang 100% aman, privat, dan berfungsi offline.
 - **Grafik Interaktif**: Distribusi user, aktivitas per jam, timeline
 - **Filter Advanced**: Berdasarkan user, tanggal, jam, kata kunci
 - **Analisis Kata**: Kata dan frasa yang paling sering digunakan
-- **Export**: CSV dan PDF report yang profesional
+- **Export**: CSV dan PDF report
 - **Support ZIP**: Upload file .zip yang berisi chat .txt
 
 ## 💽 Cara Penggunaan
@@ -72,4 +72,4 @@ Aplikasi analisis chat WhatsApp yang 100% aman, privat, dan berfungsi offline.
 
 ---
 
-*Dibuat dengan GitHub Copilot Agent menggunakan Claude*
+*Dibuat dengan GitHub Copilot Agent menggunakan Model Claude 4*
