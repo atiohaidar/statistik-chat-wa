@@ -1672,7 +1672,8 @@
                 line = line.trim();
                 if (!line) continue;
 
-                const messagePattern = /^(\d{1,2}\/\d{1,2}\/\d{4}),\s(\d{1,2}:\d{2})\s-\s(.+?):\s(.*)$/;
+                // Pola regex tangguh: Mendukung iOS/Android, pemisah koma/spasi, pemisah waktu titik/titik dua, tahun 2/4 digit, detik opsional, AM/PM/pagi/siang/sore/malam opsional.
+                const messagePattern = /^\[?(\d{1,2}[/.-]\d{1,2}[/.-]\d{2,4})(?:,\s|\s)(\d{1,2}[:.]\d{2}(?:[:.]\d{2})?(?:\s?(?:am|pm|pagi|siang|sore|malam))?)\]?(?:\s-\s|\s)(.+?):\s(.*)$/i;
                 const match = line.match(messagePattern);
 
                 if (match) {
@@ -1725,13 +1726,44 @@
         }
 
         function parseDate(dateStr) {
-            const [day, month, year] = dateStr.split('/');
-            return new Date(parseInt(year), parseInt(month) - 1, parseInt(day));
+            // Split dengan pemisah non-angka (seperti /, -, .)
+            const parts = dateStr.split(/[^0-9]+/);
+            if (parts.length < 3) return new Date();
+            
+            let [day, month, year] = parts;
+            let yearInt = parseInt(year);
+            
+            // Konversi tahun 2-digit menjadi 4-digit secara cerdas
+            if (year.length === 2 || yearInt < 100) {
+                yearInt += yearInt < 50 ? 2000 : 1900;
+            }
+            
+            return new Date(yearInt, parseInt(month) - 1, parseInt(day));
         }
 
         function parseTime(timeStr) {
-            const [hour, minute] = timeStr.split(':');
-            return { hour: parseInt(hour), minute: parseInt(minute) };
+            const normalized = timeStr.toLowerCase().trim();
+            const isPm = normalized.includes('pm') || 
+                         normalized.includes('sore') || 
+                         normalized.includes('malam') || 
+                         normalized.includes('siang');
+            const isAm = normalized.includes('am') || 
+                         normalized.includes('pagi');
+            
+            // Mencocokkan angka jam dan menit (pemisah titik atau titik dua)
+            const match = normalized.match(/(\d{1,2})[:.](\d{2})/);
+            if (!match) return { hour: 0, minute: 0 };
+            
+            let hour = parseInt(match[1]);
+            const minute = parseInt(match[2]);
+            
+            if (isPm && hour < 12) {
+                hour += 12;
+            } else if (isAm && hour === 12) {
+                hour = 0;
+            }
+            
+            return { hour, minute };
         }
 
         function processMessage(message) {
@@ -2228,11 +2260,23 @@
             // Clear search box when applying date filter
             searchBox.value = '';
             
-            // Convert chart label back to date
-            const today = new Date();
-            const currentYear = today.getFullYear();
-            const [day, month] = dateLabel.split('/');
-            const targetDate = `${day.padStart(2, '0')}/${month.padStart(2, '0')}/${currentYear}`;
+            // dateLabel biasanya "DD/MM" atau format lokal sejenis. Split dengan non-angka
+            const parts = dateLabel.split(/[^0-9]+/);
+            const targetDay = parts[0].padStart(2, '0');
+            const targetMonth = parts[1].padStart(2, '0');
+            
+            // Cari kecocokan format tanggal asli di dailyStats agar tahun dan pemisah sesuai
+            let targetDate = Object.keys(dailyStats).find(dateKey => {
+                const keyParts = dateKey.split(/[^0-9]+/);
+                if (keyParts.length < 2) return false;
+                return keyParts[0].padStart(2, '0') === targetDay && keyParts[1].padStart(2, '0') === targetMonth;
+            });
+            
+            // Fallback jika tidak ditemukan
+            if (!targetDate) {
+                const currentYear = new Date().getFullYear();
+                targetDate = `${targetDay}/${targetMonth}/${currentYear}`;
+            }
             
             // Check if this date filter is already active (toggle functionality)
             if (currentFilters.date === targetDate) {
